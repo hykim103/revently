@@ -5,5 +5,5 @@ class Menu < ApplicationRecord
   validates :category, presence: true
   validates :price, presence: true
 
-  validates :size, inclusion: { in: %w(Breakfast Lunch Dinner Starters Mains Desserts Drinks), message: "%{value} is not a valid category" }
+  validates :category, inclusion: { in: %w(Breakfast Lunch Dinner Starters Mains Desserts Drinks), message: "%{value} is not a valid category" }
 end
