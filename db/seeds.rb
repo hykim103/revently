@@ -6,9 +6,9 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 puts "Destroy all database..."
-User.destroy_all
-Restaurant.destroy_all
 Menu.destroy_all
+Restaurant.destroy_all
+User.destroy_all
 
 puts "Create new database..."
 
@@ -42,7 +42,7 @@ User.create!(
     Menu.create!(
       name: Faker::Food.dish,
       description: Faker::Food.description,
-      category: ["Breakfase", "Lunch", "Dinner", "Starters", "Mains", "Desserts", "Drinks"].sample,
+      category: ["Breakfast", "Lunch", "Dinner", "Starters", "Mains", "Desserts", "Drinks"].sample,
       price: rand(1.00..50.00),
       restaurant_id: restaurant.id
     )
