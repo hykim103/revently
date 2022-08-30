@@ -1,7 +1,15 @@
-<h1>Visits</h1>
-<h2>Upcoming reservation</h2>
-<div class="flex flex-wrap gap-4 justify-center">
-  <% @reservations.each do |reservation| %>
-    <%= render reservation %>
+
+<%# <div class="flex flex-wrap gap-4 justify-center">
+</div> %>
+
+<div class="container">
+  <h1 class="text-5xl">Visits</h1>
+  <h2 class="text-5xl">Upcoming reservation</h2>
+
+  <p><%= @reservations.first.restaurant.name %> </p>
+
+
+  <% current_user.reservations.each do |reservation| %>
+  <%= reservation.booking %>
   <% end %>
 </div>

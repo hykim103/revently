@@ -1,6 +1,6 @@
 class ReservationsController < ApplicationController
   def user_bookings
-    @reservations = Reservation.where(user: current_user)
+    @reservations = Reservation.where(user_id: current_user)
   end
 
   def create
