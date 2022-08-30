@@ -4,7 +4,7 @@
   <%= link_to "Back", restaurants_path %>
 </div>
 
-<div class>
+<div class="form-input px-4 py-3 rounded-full">
   <%= simple_form_for [@restaurant, Reservation.new] do |f| %>
     <%= f.input :booking, as: :date, html5: true %>
     <%= f.submit "Reserve" %>
