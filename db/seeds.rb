@@ -21,7 +21,7 @@ host = User.create!(
   is_host: true
 )
 
-User.create!(
+visitor = User.create!(
   email: "visitor@lewagon.com",
   password: "lewagon",
   first_name: "visitor",
@@ -30,12 +30,17 @@ User.create!(
   is_host: false
 )
 
-5.times do
+12.times do
   restaurant = Restaurant.create!(
     name: Faker::Restaurant.name,
     address: Faker::Address.full_address,
     cuisine: Faker::Food.ethnic_category,
     phone_number: Faker::PhoneNumber.cell_phone_in_e164,
+    venue_type: ["Private room only", "Whole floor", "Whole venue"].sample,
+    chairs: rand(5..40),
+    max_guests: rand(5..99),
+    price: rand(100..1999),
+    rating: rand(3.0..5.0),
     user_id: host.id
   )
   5.times do
@@ -45,6 +50,14 @@ User.create!(
       category: ["Breakfast", "Lunch", "Dinner", "Starters", "Mains", "Desserts", "Drinks"].sample,
       price: rand(1.00..50.00),
       restaurant_id: restaurant.id
+    )
+  end
+
+  5.times do
+    Reservation.create!(
+      booking: Restaurant.all.sample.id,
+      restaurant_id: restaurant.id,
+      user_id: visitor.id
     )
   end
 end
