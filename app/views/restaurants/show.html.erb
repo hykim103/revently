@@ -16,11 +16,20 @@
         <img src="https://placeimg.com/200/200/arch" class="rounded-2xl mt-3" />
       </div>
     </div>
-    <div class="show-info-container flex justify-between mt-3">
+    <div class="show-info-container flex justify-between mt-3 border-b pb-4">
       <div>
         <h2 class="text-2xl"><%= @restaurant.venue_type %> at <%= @restaurant.name %></h2>
         <h3 class="text-xl mt-1"><%= @restaurant.cuisine %> cuisine</h3>
-        <h2 class="text-lg mt-2"><i class="fa-solid fa-star text-xl mr-1"></i><%= @restaurant.rating.round(1) %></h2>
+        <div class="text-lg mt-2">
+          <% checked = @restaurant.rating.ceil %>
+          <% checked.times do %>
+            <span class="fa fa-star checked"></span>
+          <% end %>
+          <% unchecked = 5 - (@restaurant.rating.ceil) %>
+          <% unchecked.times do %>
+            <span class="fa fa-star"></span>
+          <% end %>
+        </div>
       </div>
       <div class="flex w-5/12 justify-end items-start gap-2">
         <div class="flex w-20 justify-center items-center">
