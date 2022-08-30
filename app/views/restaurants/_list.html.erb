@@ -1,8 +1,5 @@
-<div id="restaurants">
+<div class="flex flex-wrap gap-4 justify-center">
   <% restaurants.each do |restaurant| %>
     <%= render restaurant %>
-    <p>
-      <%= link_to "Show this restaurant", restaurant %>
-    </p>
   <% end %>
 </div>
