@@ -16,6 +16,7 @@
         <img src="https://placeimg.com/200/200/arch" class="rounded-2xl mt-3" />
       </div>
     </div>
+
     <div class="show-info-container flex justify-between mt-3 border-b pb-4">
       <div>
         <h2 class="text-2xl"><%= @restaurant.venue_type %> at <%= @restaurant.name %></h2>
@@ -35,23 +36,41 @@
         <div class="flex w-20 justify-center items-center">
           <h2 class="mt-2 text-xl"><%= @restaurant.chairs %></h2>
           <i class="fa-solid fa-chair ml-3 text-2xl"></i>
+
         </div>
-        <div class="flex w-20 justify-center items-center">
-          <h2 class="mt-2 text-xl"><%= @restaurant.max_guests %></h2>
-          <i class="fa-solid fa-male ml-3 text-2xl"></i>
+        <div class="flex w-5/12 justify-end items-start gap-2">
+          <div class="flex w-20 justify-center items-center">
+            <h2 class="mt-2 text-xl"><%= @restaurant.chairs %></h2>
+            <i class="fa-solid fa-chair ml-3 text-2xl"></i>
+          </div>
+          <div class="flex w-20 justify-center items-center">
+            <h2 class="mt-2 text-xl"><%= @restaurant.max_guests %></h2>
+            <i class="fa-solid fa-male ml-3 text-2xl"></i>
+          </div>
+          <div class="flex justify-center items-center w-20">
+            <h2 class="mt-2 text-xl">25</h2>
+            <i class="fas fa-beer ml-3 text-2xl"></i>
+          </div>
         </div>
-        <div class="flex justify-center items-center w-20">
-          <h2 class="mt-2 text-xl">25</h2>
-          <i class="fas fa-beer ml-3 text-2xl"></i>
+      </div>
+      <div class="booking-container flex justify-center p-3 sticky top-0">
+        <div class="w-11/12">
+          <div class="w-full p-3 border shadow-md rounded-md">
+            <div class="mb-3">
+            <%= simple_form_for [@restaurant, Reservation.new] do |f| %>
+              <div class="text-center text-lg font-medium">
+                <%= f.input :booking, label: "Choose a date", as: :date, html5: true %>
+              </div>
+              <div class="reserve-btn w-full rounded-md p-2 text-center text-bold">
+                <%= f.submit "Reserve" %>
+              </div>
+            <% end %>
+            </div>
+            <div class="flex justify-between px-3 pt-3 mt-3 border-top">
+              <p class="text-md text-bold">Total: </p>
+              <p class="text-md text-bold">$<%= @restaurant.price %></p>
+            </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-
-<div class>
-  <%= simple_form_for [@restaurant, Reservation.new] do |f| %>
-    <%= f.input :booking, as: :date, html5: true %>
-    <%= f.submit "Reserve" %>
-  <% end %>
 </div>

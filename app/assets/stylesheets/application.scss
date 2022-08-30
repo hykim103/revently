@@ -23,4 +23,18 @@
 
 .checked {
   color: orange;
+
+.booking-container {
+  width: 40%;
+}
+
+.form {
+  text-align: center;
+}
+
+.reserve-btn {
+  background-color: $purple;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 5px;
 }
