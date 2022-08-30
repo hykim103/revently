@@ -21,7 +21,7 @@ host = User.create!(
   is_host: true
 )
 
-User.create!(
+visitor = User.create!(
   email: "visitor@lewagon.com",
   password: "lewagon",
   first_name: "visitor",
@@ -45,6 +45,14 @@ User.create!(
       category: ["Breakfast", "Lunch", "Dinner", "Starters", "Mains", "Desserts", "Drinks"].sample,
       price: rand(1.00..50.00),
       restaurant_id: restaurant.id
+    )
+  end
+
+  5.times do
+    Reservation.create!(
+      booking: Restaurant.all.sample.id,
+      restaurant_id: restaurant.id,
+      user_id: visitor.id
     )
   end
 end
