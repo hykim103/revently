@@ -1,1 +1,7 @@
 <h1>Visits</h1>
+<h2>Upcoming reservation</h2>
+<div class="flex flex-wrap gap-4 justify-center">
+  <% @reservations.each do |reservation| %>
+    <%= render reservation %>
+  <% end %>
+</div>
