@@ -17,10 +17,10 @@
       </div>
     </div>
     <h2 class="text-gray-500 text-sm"><%= restaurant.cuisine %></h2>
-    <h2 class="text-gray-500 text-sm">Private room only</h2>
+    <h2 class="text-gray-500 text-sm"><%= restaurant.venue_type %></h2>
     <div class="w-full flex justify-between items-center">
-      <h2 class="mt-2 font-semibold">$500/hr</h2>
-      <h2><i class="fa-solid fa-star text-xs mr-1"></i>4.9</h2>
+      <h2 class="mt-2 font-semibold">$<%= restaurant.price %>/hr</h2>
+      <h2><i class="fa-solid fa-star text-xs mr-1"></i><%= restaurant.rating.round(1) %></h2>
     </div>
   <% end %>
 </div>

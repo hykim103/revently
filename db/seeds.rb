@@ -41,7 +41,7 @@ visitor = User.create!(
     chairs: rand(5..40),
     max_guests: rand(5..99),
     price: rand(100..1999),
-    rating: rand(3.0..5.0),
+    rating: rand(1.0..5.0),
     user_id: host.id
   )
   5.times do
