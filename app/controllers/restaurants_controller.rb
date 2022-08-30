@@ -6,6 +6,7 @@ class RestaurantsController < ApplicationController
   end
 
   def show
+    authenticate_user!
   end
 
   def new

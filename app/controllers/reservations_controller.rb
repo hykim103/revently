@@ -5,7 +5,14 @@ class ReservationsController < ApplicationController
 
   def create
     @reservation = Reservation.new(reservation_params)
-    @reservation.save
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @reservation.restaurant = @restaurant
+    @reservation.user = current_user
+    if @reservation.save!
+      redirect_to restaurants_path
+    else
+      render "restaurants/show", status: :unprocessable_entity
+    end
   end
 
   def destroy
@@ -17,6 +24,6 @@ class ReservationsController < ApplicationController
   private
 
   def reservation_params
-    params.require(:booking).permit(:booking_date)
+    params.require(:reservation).permit(:booking)
   end
 end

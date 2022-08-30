@@ -3,3 +3,10 @@
 <div>
   <%= link_to "Back", restaurants_path %>
 </div>
+
+<div class>
+  <%= simple_form_for [@restaurant, Reservation.new] do |f| %>
+    <%= f.input :booking, as: :date, html5: true %>
+    <%= f.submit "Reserve" %>
+  <% end %>
+</div>
