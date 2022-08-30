@@ -10,3 +10,13 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+.show-container {
+  width: 75%;
+  height: 100vh;
+  margin: 45px auto;
+}
+
+.show-info-container {
+  width: 60%;
+}
