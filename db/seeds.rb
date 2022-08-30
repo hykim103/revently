@@ -7,6 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 puts "Destroy all database..."
 Menu.destroy_all
+Reservation.destroy_all
 Restaurant.destroy_all
 User.destroy_all
 
@@ -52,14 +53,18 @@ visitor = User.create!(
       restaurant_id: restaurant.id
     )
   end
-
-  5.times do
-    Reservation.create!(
-      booking: Restaurant.all.sample.id,
-      restaurant_id: restaurant.id,
-      user_id: visitor.id
-    )
-  end
 end
+
+Reservation.create!(
+  booking: Faker::Date.between(from: '2022-06-23', to: '2022-11-23'),
+  restaurant_id: Restaurant.first.id,
+  user_id: visitor.id
+)
+
+Reservation.create!(
+  booking: Faker::Date.between(from: '2022-06-23', to: '2022-11-23'),
+  restaurant_id: Restaurant.last.id,
+  user_id: visitor.id
+)
 
 puts "Completed!"
