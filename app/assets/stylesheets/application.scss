@@ -10,3 +10,26 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+.card-container {
+  width: 22%;
+  margin-top: 40px;
+}
+
+@media (max-width: 1100px) {
+  .card-container {
+    width: 30%;
+  }
+}
+
+@media (max-width: 800px) {
+  .card-container {
+    width: 46%;
+  }
+}
+
+@media (max-width: 550px) {
+  .card-container {
+    width: 100%;
+  }
+}
