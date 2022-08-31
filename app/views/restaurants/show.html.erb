@@ -1,6 +1,6 @@
 <%# <div class="w-3/4 h-screen mt-11 mx-auto"> %>
 <div class="show-container">
-  <h1 class="text-3xl"><%= @restaurant.name %></h1>
+  <h1 class="text-3xl bold"><%= @restaurant.name %></h1>
   <h3 class="mt-1"><%= @restaurant.address %></h3>
   <h3 class="mt-1"><%= @restaurant.phone_number %></h3>
   <div class="w-full">
@@ -21,7 +21,7 @@
     <div class="show-reservation-container flex justify-between">
       <div class="show-info-container flex justify-between mt-3">
         <div>
-          <h2 class="text-2xl"><%= @restaurant.venue_type %> at <%= @restaurant.name %></h2>
+          <h2 class="text-2xl bold"><%= @restaurant.venue_type %> at <%= @restaurant.name %></h2>
           <h3 class="text-xl mt-1"><%= @restaurant.cuisine %> cuisine</h3>
           <div class="text-lg mt-2">
             <% checked = @restaurant.rating.ceil %>
