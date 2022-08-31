@@ -1,4 +1,4 @@
-<%# <div class="w-3/4 h-screen mt-11 mx-auto"> %>
+
 <div class="show-container">
   <h1 class="text-3xl bold"><%= @restaurant.name %></h1>
   <h3 class="mt-1"><%= @restaurant.address %></h3>
@@ -76,7 +76,7 @@
       <% @restaurant.menus.each do |menu| %>
         <div class="flex flex-wrap justify-start mt-3 gap-4">
           <div>
-            <img src="https://placeimg.com/150/150/arch" class="rounded-2xl" />
+            <img src=<%= "https://source.unsplash.com/random/120x120/?food-#{menu.name}" %> class="rounded-2xl" />
           </div>
           <div class="w-96 ml-5">
             <h1 class="text-xl font-semibold"><%= menu.name %></h1>

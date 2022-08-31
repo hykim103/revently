@@ -1,5 +1,4 @@
 
-<%# <div class="flex flex-wrap gap-4 justify-center"> %>
 <div>
   <div class="flex justify-center items-center navbar navbar-expand-sm navbar-light navbar-lewagon fixed top-16 shadow-sm">
     <div class="px-4 my-3">
@@ -41,20 +40,23 @@
   </div>
 
 
-  <div class="show-container">
-  <div class="pt-10">
-    <h1 class="text-5xl">Visits</h1>
-    <h2 class="text-4xl">Upcoming reservation</h2>
-    <div class="flex">
-      <div class="mr-20">
-          <img src="https://placeimg.com/200/180/arch" class="rounded-2xl" />
+  <div class="bookings-container">
+  <div class="pt-20">
+    <h1 class="text-3xl">Visits</h1>
+    <h2 class="text-2xl mt-6">Upcoming reservations</h2>
+    <div class="flex flex-wrap gap-10 mt-6">
+      <% @reservations.each do |booking| %>
+        <div class="flex gap-3">
+          <div>
+            <img src="https://placeimg.com/200/180/arch" class="rounded-2xl" />
+          </div>
+          <div>
+            <h2 class="text-2xl mt-2"><%= booking.restaurant.name %></h2>
+            <h2 class="text mt-2"><strong>Date:</strong> <%= booking.booking %></h2>
+            <h2 class="text mt-2"><strong>Guests:</strong> <%= booking.restaurant.max_guests %></h2>
+            <h2 class="text mt-2"><strong>Price: $</strong><%= booking.restaurant.price %></h2>
+          </div>
         </div>
-      <div>
-        <h1 class="font-semibold text-2xl flex">
-        <% @current_bookings.each do |booking| %>
-        <%= booking.restaurant.name %>
-        <%= booking.booking %>
-        <% end %>
-        </h1>
-      </div>
+      <% end %>
+    </div>
   </div>
