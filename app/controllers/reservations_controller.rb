@@ -1,6 +1,7 @@
 class ReservationsController < ApplicationController
   def user_bookings
     @reservations = Reservation.where(user_id: current_user)
+    @current_bookings = (@reservations.where(booking: [Date.today..Date.today + 1000.days])).ordered
   end
 
   def create
