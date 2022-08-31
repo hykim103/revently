@@ -5,7 +5,8 @@ import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
 export default class extends Controller {
   static values = {
     apiKey: String,
-    markers: Array
+    markers: Array,
+    marker: Object,
   }
 
   connect() {
@@ -18,6 +19,7 @@ export default class extends Controller {
 
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
+    this.#addMarkerToMap()
   }
 
   #addMarkersToMap() {
@@ -44,4 +46,10 @@ export default class extends Controller {
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
   }
 
+  #addMarkerToMap() {
+    this.markerValue =
+      new mapboxgl.Marker()
+        .setLngLat([ marker.lng, marker.lat ])
+        .addTo(this.map)
+  }
 }
