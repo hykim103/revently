@@ -8,7 +8,7 @@ class RestaurantsController < ApplicationController
         lat: restaurant.latitude,
         lng: restaurant.longitude,
         info_window: render_to_string(partial: "info_window", locals: {restaurant: restaurant}),
-        image_url: helpers.asset_url("Revently-logo.png")
+        image_url: helpers.asset_url("https://res.cloudinary.com/hykim103/image/upload/v1661956170/Revently-logo_ja0wa1.png")
       }
     end
   end
