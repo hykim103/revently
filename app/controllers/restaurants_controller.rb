@@ -8,13 +8,18 @@ class RestaurantsController < ApplicationController
         lat: restaurant.latitude,
         lng: restaurant.longitude,
         info_window: render_to_string(partial: "info_window", locals: {restaurant: restaurant}),
-        image_url: helpers.asset_url("logo.png")
+        image_url: helpers.asset_url("Revently-logo.png")
       }
     end
   end
 
   def show
     authenticate_user!
+    @marker = [{
+      lat: @restaurant.latitude,
+      lng: @restaurant.longitude,
+      info_window: render_to_string(partial: "info_window", locals: { restaurant: @restaurant })
+    }]
   end
 
   def new
