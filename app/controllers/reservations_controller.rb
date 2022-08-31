@@ -10,7 +10,7 @@ class ReservationsController < ApplicationController
     @reservation.restaurant = @restaurant
     @reservation.user = current_user
     if @reservation.save!
-      redirect_to restaurants_path
+      redirect_to user_bookings_path
     else
       render "restaurants/show", status: :unprocessable_entity
     end
