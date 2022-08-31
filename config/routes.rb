@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
   get 'user_bookings', to: 'reservations#user_bookings'
+  get 'confirmation', to: 'reservations#create'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
