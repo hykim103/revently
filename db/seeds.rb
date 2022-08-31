@@ -49,7 +49,7 @@ visitor = User.create!(
       name: Faker::Food.dish,
       description: Faker::Food.description,
       category: ["Breakfast", "Lunch", "Dinner", "Starters", "Mains", "Desserts", "Drinks"].sample,
-      price: rand(1.00..50.00),
+      price: rand(1..50),
       restaurant_id: restaurant.id
     )
   end
