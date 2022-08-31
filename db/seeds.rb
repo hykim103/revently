@@ -5,6 +5,21 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+ADDRESS = [
+  "204 Brick Lane Shoreditch, London, E1 6SA, England",
+  "675 Finchley Road, London, NW2 2JP, England",
+  "48 Goodge Street, London, W1T 4LX, England",
+  "383 Kennington Lane Vauxhall, London, SE11 5QY, England",
+  "4 Noel Street Soho, London, W1F 8GB, England",
+  "8 Plender Street Bayham Street, London, NW1 0JT, England",
+  "97 Colney Hatch Lane, London, N10 1LR, England",
+  "1A Launceston Place, London, W8 5RL, England",
+  "3-4 Park Close, Knightsbridge, London, SW1X 7PQ, England",
+  "10A Strathearn Place Paddington, London, W2 2NH, England",
+  "12 Newport Place, London, WC2H 7PR, England",
+  "4 Bedford Corner South Parade, London, W4 1LD, England"
+]
+
 puts "Destroy all database..."
 Menu.destroy_all
 Reservation.destroy_all
@@ -31,10 +46,11 @@ visitor = User.create!(
   is_host: false
 )
 
+i = 0
 12.times do
   restaurant = Restaurant.create!(
     name: Faker::Restaurant.name,
-    address: Faker::Address.full_address,
+    address: ADDRESS[i],
     cuisine: Faker::Food.ethnic_category,
     phone_number: Faker::PhoneNumber.cell_phone_in_e164,
     venue_type: ["Private room only", "Whole floor", "Whole venue"].sample,
@@ -53,6 +69,7 @@ visitor = User.create!(
       restaurant_id: restaurant.id
     )
   end
+  i += 1
 end
 
 Reservation.create!(
