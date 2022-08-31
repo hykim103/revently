@@ -1,3 +1,4 @@
+<%# <div class="w-3/4 h-screen mt-11 mx-auto"> %>
 <div class="show-container">
   <h1 class="text-3xl bold"><%= @restaurant.name %></h1>
   <h3 class="mt-1"><%= @restaurant.address %></h3>
@@ -5,15 +6,15 @@
   <div class="w-full">
     <div class="w-full mt-4 flex space-between gap-3">
       <div class="flex">
-        <img src="https://placeimg.com/650/400/arch" class="rounded-2xl" />
+        <img src="https://images.unsplash.com/photo-1560053608-13721e0d69e8?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=400&ixid=MnwxfDB8MXxyYW5kb218MHx8cmVzdGF1cmFudHx8fHx8fDE2NjE5NTIyODg&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=650" class="rounded-2xl" />
       </div>
       <div>
-        <img src="https://placeimg.com/200/200/arch" class="rounded-2xl" />
-        <img src="https://placeimg.com/200/200/arch" class="rounded-2xl mt-3" />
+        <img src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=200&ixid=MnwxfDB8MXxyYW5kb218MHx8cmVzdGF1cmFudHx8fHx8fDE2NjE5NTE4Mjc&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=200" class="rounded-2xl" />
+        <img src="https://images.unsplash.com/photo-1592861956120-e524fc739696?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=200&ixid=MnwxfDB8MXxyYW5kb218MHx8cmVzdGF1cmFudHx8fHx8fDE2NjE5NTE5MTM&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=200" class="rounded-2xl mt-3" />
       </div>
       <div>
-        <img src="https://placeimg.com/200/200/arch" class="rounded-2xl" />
-        <img src="https://placeimg.com/200/200/arch" class="rounded-2xl mt-3" />
+        <img src="https://images.unsplash.com/photo-1604328471151-b52226907017?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=200&ixid=MnwxfDB8MXxyYW5kb218MHx8cmVzdGF1cmFudHx8fHx8fDE2NjE5NTE5NzI&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=200" class="rounded-2xl" />
+        <img src="https://images.unsplash.com/photo-1564759224907-65b945ff0e84?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=200&ixid=MnwxfDB8MXxyYW5kb218MHx8cmVzdGF1cmFudHx8fHx8fDE2NjE5NTIwODk&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=200" class="rounded-2xl mt-3" />
       </div>
     </div>
 
@@ -68,22 +69,28 @@
         </div>
       </div>
     </div>
-</div>
+  </div>
+  <div class="mt-10">
+    <h2 class="text-3xl">Menu</h2>
+    <div class="mt-4">
+      <% @restaurant.menus.each do |menu| %>
+        <div class="flex flex-wrap justify-start mt-3 gap-4">
+          <div>
+            <img src="https://placeimg.com/150/150/arch" class="rounded-2xl" />
+          </div>
+          <div class="w-96 ml-5">
+            <h1 class="text-xl font-semibold"><%= menu.name %></h1>
+            <p class="text-sm"><%= menu.description %></p>
+            <h2 class="font-semibold mt-2">$<%= menu.price.round(2) %></h2>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
-<div class="mt-10">
-  <h2 class="text-3xl">Menu</h2>
-  <div class="mt-4">
-    <% @restaurant.menus.each do |menu| %>
-      <div class="flex flex-wrap justify-start mt-3 gap-4">
-        <div>
-          <img src="https://placeimg.com/150/150/arch" class="rounded-2xl" />
-        </div>
-        <div class="w-96 ml-5">
-          <h1 class="text-xl font-semibold"><%= menu.name %></h1>
-          <p class="text-sm"><%= menu.description %></p>
-          <h2 class="font-semibold mt-2">$<%= menu.price.round(2) %></h2>
-        </div>
-      </div>
-    <% end %>
+  <div style="width: 100%; height: 600px; margin: 50px auto;"
+    data-controller="map"
+    data-map-marker-value="<%= @marker.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>

@@ -11,6 +11,9 @@
 @import "components/index";
 @import "pages/index";
 
+//Mapbox
+@import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder";
+
 .show-container {
   width: 75%;
   height: 100vh;
@@ -38,4 +41,14 @@
   color: white;
   font-weight: 600;
   letter-spacing: 5px;
+}
+
+.window-btn {
+  background-color: $purple;
+  color: white;
+  margin-top: 2.5rem;
+}
+
+.logo-color {
+  color: black;
 }

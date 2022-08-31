@@ -1,7 +1,7 @@
 <div class="card-container">
   <%= link_to restaurant do %>
     <div class="w-full">
-      <img src="https://placeimg.com/400/380/arch" class="rounded-2xl" />
+      <img src=<%= "https://source.unsplash.com/random/400x380/?restaurant-#{restaurant.cuisine}" %> class="rounded-2xl" />
     </div>
     <div class="w-full flex justify-between items-center mt-3">
       <h1 class="font-semibold"><%= restaurant.name %></h1>
