@@ -7,6 +7,7 @@ class MenusController < ApplicationController
   def create
     @restaurant = Restaurant.find(params[:restaurant_id])
     @menu = Menu.new(menu_params)
+    @menu.restaurant = @restaurant
     if @menu.save
       redirect_to restaurants_path
     else
