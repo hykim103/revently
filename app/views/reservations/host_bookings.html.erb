@@ -67,35 +67,8 @@
           </div>
           <% end %>
         <% end %>
+        <%= @cureent_bookings.each do |reservation| %>
+        <%=  reservation.booking.restaurant.reservations %>
+        <%= end %>
     </div>
   </div>
-
-   <%# This is the past bookings section %>
-  <div class="past-bookings-container">
-  <div class="pt-20">
-    <span class="text-2xl mt-6 mr-2 font-semibold">Past </span>
-     <span class="text-2xl mt-6 mr-2 font-semibold">bookings</span>
-    <div class="flex flex-wrap gap-10 mt-6 justify">
-        <% @past_bookings.each do |booking| %>
-          <%= link_to restaurants_path(booking.restaurant_id) do %>
-          <div class="flex gap-3">
-            <div>
-              <img src=<%="https://source.unsplash.com/random/200x180/?restaurant-#{booking.restaurant.cuisine}"%> class="rounded-2xl" />
-            </div>
-            <div>
-              <h2 class="text-2xl mt-2 font-semibold"><%= booking.restaurant.name %></h2>
-              <h2 class="text mt-2"><strong>Date:</strong> <%= booking.booking %></h2>
-              <h2 class="text mt-2"><strong>Guests:</strong> <%= booking.restaurant.max_guests %></h2>
-              <h2 class="text mt-2"><strong>Price: $</strong><%= booking.restaurant.price %></h2>
-              <button class="bg-red-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mt-3"  hidden="hidden"> <%= link_to "Cancel booking",
-                  reservation_path(booking),
-                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-                %>
-              </button>
-            </div>
-          </div>
-          <% end %>
-        <% end %>
-    </div>
-  </div>
-</div>

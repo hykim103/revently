@@ -1,3 +1,4 @@
+
 <div data-controller="navlinks">
   <div class="flex justify-center items-center navbar navbar-expand-sm navbar-light navbar-lewagon fixed top-16 shadow-sm z-20">
     <div class="px-4 my-3">
@@ -49,13 +50,16 @@
         <% end %>
       </p>
     </div>
+ </div>
 
-  </div>
-  <%= render "restaurants/list", restaurants: @restaurants %>
+<%= render "restaurants/list", restaurants: @restaurants %>
 
-  <div style="width: 85%; height: 600px; margin: 50px auto; z-index: 0;"
-    data-controller="map"
-    data-map-markers-value="<%= @markers.to_json %>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
+<div style="width: 85%; height: 600px; margin: 50px auto; z-index: 0;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
+
+<div class="mt-12">
+  <%= render "shared/footer" %>
 </div>

@@ -79,6 +79,8 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+# env file for api key
+gem "dotenv-rails", groups: [:development, :test]
 
 gem "devise"
 

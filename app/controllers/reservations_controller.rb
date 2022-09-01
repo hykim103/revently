@@ -2,6 +2,11 @@ class ReservationsController < ApplicationController
   def user_bookings
     @reservations = Reservation.where(user_id: current_user)
     @current_bookings = (@reservations.where(booking: [Date.today..Date.today + 1000.days])).ordered
+
+    @past_bookings = (@reservations.where(booking: [Date.today - 1000.days..Date.today])).ordered
+
+    
+    @all = @reservations.all
   end
 
   def create
@@ -19,7 +24,7 @@ class ReservationsController < ApplicationController
   def destroy
     @reservation = Reservation.find(params[:id])
     @reservation.destroy
-    redirect_to user_path, status: :see_other
+    redirect_to user_bookings_path, status: :see_other
   end
 
   private

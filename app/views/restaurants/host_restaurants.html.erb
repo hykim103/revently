@@ -1,0 +1,40 @@
+<div>
+  <div class="flex flex-wrap gap-4 justify-center mt-44 px-20">
+    <% @restaurants.each do |restaurant| %>
+
+      <div class="card-container">
+        <%= link_to restaurant do %>
+          <div class="w-full">
+            <img src=<%= "https://source.unsplash.com/random/400x380/?restaurant-#{restaurant.cuisine}" %> class="rounded-2xl" />
+          </div>
+          <div class="w-full flex justify-between items-center mt-3">
+            <h1 class="font-semibold"><%= restaurant.name %></h1>
+            <div class="flex items-center gap-2">
+              <div class="flex items-center gap-1">
+                <i class="fas fa-chair text-sm"></i>
+                <p>14</p>
+              </div>
+              <div class="flex items-center gap-1">
+                <i class="fas fa-male text"></i>
+                <p>25</p>
+              </div>
+            </div>
+          </div>
+          <h2 class="text-gray-500 text-sm"><%= restaurant.cuisine %></h2>
+          <h2 class="text-gray-500 text-sm"><%= restaurant.venue_type %></h2>
+          <div class="w-full flex justify-between items-center">
+            <h2 class="mt-2 font-semibold">$<%= restaurant.price %>/hr</h2>
+            <h2><i class="fa-solid fa-star text-xs mr-1"></i><%= restaurant.rating.round(1) %></h2>
+          </div>
+        <% end %>
+      </div>
+
+    <% end %>
+  </div>
+
+  <div style="width: 85%; height: 600px; margin: 50px auto; z-index: 0;"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+</div>
