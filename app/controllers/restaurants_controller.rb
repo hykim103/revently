@@ -13,6 +13,18 @@ class RestaurantsController < ApplicationController
     end
   end
 
+  def host_restaurants
+    @restaurants = Restaurant.where(user_id: current_user)
+    @markers = @restaurants.geocoded.map do |restaurant|
+      {
+        lat: restaurant.latitude,
+        lng: restaurant.longitude,
+        info_window: render_to_string(partial: "info_window", locals: {restaurant: restaurant}),
+        image_url: helpers.asset_url("https://res.cloudinary.com/hykim103/image/upload/v1661956170/Revently-logo_ja0wa1.png")
+      }
+    end
+  end
+
   def show
     authenticate_user!
     @marker = [{
