@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :restaurants do
     resources :reservations, only: [:create]
+    resources :menus, only: %i[new create edit update]
   end
 end
