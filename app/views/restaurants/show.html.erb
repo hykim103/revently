@@ -8,7 +8,7 @@
     </div>
 
     <div>
-      <% if current_user == @restaurant.user_id %>
+      <% if current_user != @restaurant.user_id %>
         <%= link_to "Edit", edit_restaurant_path%>
       <% end %>
     </div>
@@ -99,22 +99,22 @@
             </div>
 
             <div>
-              <% if current_user == @restaurant.user_id %>
-              <%= link_to "Edit item", edit_menu_path%>
+              <% if current_user != @restaurant.user_id %>
+              <%= link_to "Edit item", edit_restaurant_menu_path%>
               <% end %>
             </div>
 
             <div>
-              <% if current_user == @restaurant.user_id %>
-              <%= link_to "Delete item", destroy_menu_path%>
+              <% if current_user != @restaurant.user_id %>
+              <%= link_to "Delete item", destroy_restaurant_menu_path%>
               <% end %>
             </div>
           </div>
         </div>
       <% end %>
 
-      <% if current_user == @restaurant.user_id %>
-      <%= link_to "Add item", edit_menu_path%>
+      <% if current_user != @restaurant.user_id %>
+      <%= link_to "Add item", new_restaurant_menu_path%>
       <% end %>
 
     </div>
