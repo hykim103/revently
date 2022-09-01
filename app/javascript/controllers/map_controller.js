@@ -19,7 +19,7 @@ export default class extends Controller {
 
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
-    this.#addMarkerToMap()
+    // this.#addMarkerToMap()
   }
 
   #addMarkersToMap() {
@@ -46,10 +46,10 @@ export default class extends Controller {
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
   }
 
-  #addMarkerToMap() {
-    this.markerValue =
-      new mapboxgl.Marker()
-        .setLngLat([ marker.lng, marker.lat ])
-        .addTo(this.map)
-  }
+  // #addMarkerToMap() {
+  //   this.markerValue =
+  //     new mapboxgl.Marker()
+  //       .setLngLat([ marker.lng, marker.lat ])
+  //       .addTo(this.map)
+  // }
 }
