@@ -9,7 +9,7 @@ class MenusController < ApplicationController
     @menu = Menu.new(menu_params)
     @menu.restaurant = @restaurant
     if @menu.save
-      redirect_to restaurants_path
+      redirect_to new_restaurant_menu_path(@restaurant)
     else
       render :new, status: :unprocessable_entity
     end
@@ -23,7 +23,8 @@ class MenusController < ApplicationController
   end
 
   def destroy
-    @menu.destroy
+    @menu.find(params[:id])
+    @menu.destroy status: :see_other
   end
 
   private
