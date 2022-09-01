@@ -51,13 +51,13 @@ i = 0
   restaurant = Restaurant.create!(
     name: Faker::Restaurant.name,
     address: ADDRESS[i],
-    cuisine: Faker::Food.ethnic_category,
+    cuisine: ["American", "Japanese", "Mexican", "Chinese", "Bar", "Vegan"].sample,
     phone_number: Faker::PhoneNumber.cell_phone_in_e164,
     venue_type: ["Private room only", "Whole floor", "Whole venue"].sample,
     chairs: rand(5..40),
     max_guests: rand(5..99),
     price: rand(100..1999),
-    rating: rand(1.0..5.0),
+    rating: rand(2.0..5.0),
     user_id: host.id
   )
   5.times do
