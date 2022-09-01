@@ -1,16 +1,26 @@
-<div>
-  <%= link_to "Back", new_restaurant_path, class: "ml-3" %>
-</div>
-
-<div class="flex justify-between">
-  <div class="flex justify-center items-center bg-purple-500 text-white"style="width: 50%; height: 100vh;">
-    <h1 class="mb-5 text-5xl">Add your Menu</h1>
+<div class="flex justify-between mt-3">
+  <div class="flex justify-center items-center form-bg text-white"style="width: 50%; height: 100vh;">
+    <h1 class="text-5xl font-semibold">Add your Menu</h1>
   </div>
-  <div class="flex justify-center" style="width: 50%;">
-    <div style="width: 80%;">
-      <%= render "form", menu: @menu %>
+  <div class="flex pl-10 pr-5 mt-2" style="width: 50%;">
+    <div class="flex" style="width: 60%">
+      <div style="width: 90%;">
+        <%= render "form", menu: @menu %>
+      </div>
+    </div>
+    <div style="width: 40%;">
+      <h3 class="text-2xl mb-3 font-semibold text-gray">Added Items</h3>
+      <div style="width: 100%;">
+        <% @restaurant.menus.each do |menu| %>
+          <div class="border-solid border-l-2 border-indigo-300 px-3 py-2">
+            <span class="font-semibold"><%= menu.name %> $<%= menu.price %></span>
+            <p class="text-sm">description: <%= menu.description %></p>
+            <p class="text-sm">category: <%= menu.category %></p>
+          </div>
+          <br>
+        <% end %>
+      <%= link_to "Finish", restaurant_path(@restaurant), class: "bg-indigo-600 text-white ml-5 px-5 py-2.5 rounded-md w-1/2" %>
+      </div>
     </div>
   </div>
-
-  <br>
 </div>
