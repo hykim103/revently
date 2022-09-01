@@ -2,7 +2,15 @@ class ReservationsController < ApplicationController
   def user_bookings
     @reservations = Reservation.where(user_id: current_user)
     @current_bookings = (@reservations.where(booking: [Date.today..Date.today + 1000.days])).ordered
+    @past_bookings = (@reservations.where(booking: [Date.today - 1000.days..Date.today])).ordered
+    @all = @reservations.all
+  end
 
+  def host_bookings
+    @reservations = Reservation.where(user_id: current_user)
+    @host_reservations = Reservation.where(restaurant_id: params[:restaurants_ids].to_i)
+
+    @current_bookings = (@reservations.where(booking: [Date.today..Date.today + 1000.days])).ordered
     @past_bookings = (@reservations.where(booking: [Date.today - 1000.days..Date.today])).ordered
     @all = @reservations.all
   end

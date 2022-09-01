@@ -2,7 +2,33 @@ class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
 
   def index
+
     @restaurants = Restaurant.all
+    if params.present?
+      if params[:rating] == "4.0"
+        @restaurants = Restaurant.where("rating > ?", 4.0)
+      elsif params[:cuisine] == "American"
+        @restaurants = Restaurant.where(cuisine: "American")
+      elsif params[:cuisine] == "Japanese"
+        @restaurants = Restaurant.where(cuisine: "Japanese")
+      elsif params[:cuisine] == "Mexican"
+        @restaurants = Restaurant.where(cuisine: "Mexican")
+      elsif params[:cuisine] == "Chinese"
+        @restaurants = Restaurant.where(cuisine: "Chinese")
+      elsif params[:cuisine] == "Bar"
+        @restaurants = Restaurant.where(cuisine: "Bar")
+      elsif params[:cuisine] == "Vegan"
+        @restaurants = Restaurant.where(cuisine: "Vegan")
+      end
+    end
+
+
+    if params[:query].present?
+      sql_query = "name ILIKE :query OR cuisine ILIKE :query"
+      @restaurants = Restaurant.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @restaurants = Restaurant.all
+    end
     @markers = @restaurants.geocoded.map do |restaurant|
       {
         lat: restaurant.latitude,
@@ -15,6 +41,7 @@ class RestaurantsController < ApplicationController
 
   def host_restaurants
     @restaurants = Restaurant.where(user_id: current_user)
+
     @markers = @restaurants.geocoded.map do |restaurant|
       {
         lat: restaurant.latitude,
