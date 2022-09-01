@@ -84,7 +84,7 @@
       <% end %>
 
       <% if @restaurant.user == current_user %>
-        <%= link_to "See all reservations", host_bookings_path%>
+        <%= link_to "See all reservations", host_bookings_path(restaurants_ids: @restaurant.id)%>
       <% end %>
 
     </div>
