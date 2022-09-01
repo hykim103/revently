@@ -89,11 +89,10 @@
         <% if @restaurant.user == current_user %>
           <div class="mt-4 p-2 border shadow-sm rounded-lg bg-white fixed bottom-20 right-44 z-50">
             <i class="fa-solid fa-list"></i>
-            <%= link_to "See all reservations", host_bookings_path%>
+            <%= link_to "See all reservations", host_bookings_path(restaurants_ids: @restaurant.id)%>
           </div>
         <% end %>
       </div>
-
     </div>
   </div>
 
@@ -149,11 +148,11 @@
     </div>
   </div>
 
-  <div style="width: 100%; height: 600px; margin: 50px auto;"
+  <%# <div style="width: 100%; height: 600px; margin: 50px auto;"
     data-controller="map"
-    data-map-marker-value="<%= @marker.to_json %>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
+    data-map-marker-value="<%= @marker.to_json %>
+    <%# data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>
+  <%# </div> %>
 </div>
 
 <div class="mt-12">

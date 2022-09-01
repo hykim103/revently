@@ -2,6 +2,27 @@ class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
 
   def index
+    # Query params for the filters in the restaurants page
+    @restaurants = Restaurant.all
+    if params.present?
+      if params[:rating] == "4.0"
+        @restaurants = Restaurant.where("rating > ?", 4.0)
+      elsif params[:cuisine] == "American"
+        @restaurants = Restaurant.where(cuisine: "American")
+      elsif params[:cuisine] == "Japanese"
+        @restaurants = Restaurant.where(cuisine: "Japanese")
+      elsif params[:cuisine] == "Mexican"
+        @restaurants = Restaurant.where(cuisine: "Mexican")
+      elsif params[:cuisine] == "Chinese"
+        @restaurants = Restaurant.where(cuisine: "Chinese")
+      elsif params[:cuisine] == "Bar"
+        @restaurants = Restaurant.where(cuisine: "Bar")
+      elsif params[:cuisine] == "Vegan"
+        @restaurants = Restaurant.where(cuisine: "Vegan")
+      end
+    end
+
+    # Query params for the search bar at the top of each page
     if params[:query].present?
       sql_query = "name ILIKE :query OR cuisine ILIKE :query"
       @restaurants = Restaurant.where(sql_query, query: "%#{params[:query]}%")
@@ -18,8 +39,12 @@ class RestaurantsController < ApplicationController
     end
   end
 
+  def search_index
+  end
+
   def host_restaurants
     @restaurants = Restaurant.where(user_id: current_user)
+
     @markers = @restaurants.geocoded.map do |restaurant|
       {
         lat: restaurant.latitude,
