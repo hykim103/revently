@@ -1,0 +1,74 @@
+<%# header icons %>
+<div>
+  <div class="flex justify-center items-center navbar navbar-expand-sm navbar-light navbar-lewagon fixed top-16 shadow-sm">
+    <div class="px-4 my-3">
+      <p class="text-2xl">
+        <i class="fas fa-star"></i>
+      </p>
+    </div>
+    <div class="px-4 my-3">
+      <p class="text-2xl">
+        <i class="fas fa-hamburger"></i>
+      </p>
+    </div>
+    <div class="px-4 my-3">
+      <p class="text-2xl">
+        <i class="fas fa-fish"></i>
+      </p>
+    </div>
+    <div class="px-4 my-3">
+      <p class="text-2xl">
+        <i class="fas fa-pepper-hot"></i>
+      </p>
+    </div>
+    <div class="px-4 my-3">
+      <p class="text-2xl">
+        <i class="fa-solid fa-bowl-food"></i>
+      </p>
+    </div>
+    <div class="px-4 my-3">
+      <p class="text-2xl">
+        <i class="fa-solid fa-martini-glass-citrus"></i>
+      </p>
+    </div>
+    <div class="px-4 my-3">
+      <p class="text-2xl">
+        <i class="fas fa-carrot"></i>
+      </p>
+    </div>
+  </div>
+
+  <%# This is the upcoming reservations section %>
+  <div class="bookings-container">
+  <div class="pt-20">
+    <div class="text-center">
+      <span class="text-3xl text-center font-semibold">Your</span>
+      <span class="text-3xl text-center font-semibold text-indigo-600"> bookings</span>
+    </div>
+    <span class="text-2xl mt-6 mr-2 font-extrabold">Upcoming reservations</span>
+    <div class="flex flex-wrap gap-10 mt-6 justify">
+        <% @current_bookings.each do |booking| %>
+          <%= link_to restaurant_path(booking.restaurant_id) do %>
+          <div class="flex gap-3">
+            <div>
+              <img src=<%="https://source.unsplash.com/random/200x180/?restaurant-#{booking.restaurant.cuisine}"%> class="rounded-2xl" />
+            </div>
+            <div>
+              <h2 class="text-2xl mt-2 font-semibold"><%= booking.restaurant.name %></h2>
+              <h2 class="text mt-2"><strong>Date:</strong> <%= booking.booking %></h2>
+              <h2 class="text mt-2"><strong>Guests:</strong> <%= booking.restaurant.max_guests %></h2>
+              <h2 class="text mt-2"><strong>Price: $</strong><%= booking.restaurant.price %></h2>
+              <button class="bg-red-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mt-3">  <%= link_to "Cancel Booking",
+                  reservation_path(booking),
+                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+                %>
+              </button>
+            </div>
+          </div>
+          <% end %>
+        <% end %>
+        <%= @cureent_bookings.each do |reservation| %>
+        <%=  reservation.booking.restaurant.reservations %>
+        <%= end %>
+    </div>
+  </div>

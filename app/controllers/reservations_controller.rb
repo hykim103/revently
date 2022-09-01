@@ -4,6 +4,8 @@ class ReservationsController < ApplicationController
     @current_bookings = (@reservations.where(booking: [Date.today..Date.today + 1000.days])).ordered
 
     @past_bookings = (@reservations.where(booking: [Date.today - 1000.days..Date.today])).ordered
+
+    
     @all = @reservations.all
   end
 
