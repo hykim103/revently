@@ -1,4 +1,3 @@
-
 <div class="show-container">
   <h1 class="text-3xl bold"><%= @restaurant.name %></h1>
   <h3 class="mt-1"><%= @restaurant.address %></h3>
@@ -93,4 +92,8 @@
     data-map-marker-value="<%= @marker.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
+</div>
+
+<div class="mt-12">
+  <%= render "shared/footer" %>
 </div>
