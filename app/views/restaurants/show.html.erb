@@ -98,23 +98,24 @@
               <h2 class="font-semibold mt-2">$<%= menu.price.round(2) %></h2>
             </div>
 
-            <div>
+            <div class="mx-6">
               <% if current_user != @restaurant.user_id %>
-              <%= link_to "Edit item", edit_restaurant_menu_path%>
+              <%= link_to "Edit", "#"%>
               <% end %>
             </div>
 
             <div>
               <% if current_user != @restaurant.user_id %>
-              <%= link_to "Delete item", destroy_restaurant_menu_path%>
+              <%= link_to "Delete", "#"%>
               <% end %>
             </div>
+
           </div>
         </div>
       <% end %>
 
       <% if current_user != @restaurant.user_id %>
-      <%= link_to "Add item", new_restaurant_menu_path%>
+      <%= link_to "Add", "#"%>
       <% end %>
 
     </div>
