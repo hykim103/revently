@@ -45,7 +45,7 @@
     <h1 class="text-3xl">Visits</h1>
     <h2 class="text-2xl mt-6">Upcoming reservations</h2>
     <div class="flex flex-wrap gap-10 mt-6">
-      <% @reservations.each do |booking| %>
+      <% @current_bookings.each do |booking| %>
         <div class="flex gap-3">
           <div>
             <img src="https://placeimg.com/200/180/arch" class="rounded-2xl" />
@@ -55,6 +55,11 @@
             <h2 class="text mt-2"><strong>Date:</strong> <%= booking.booking %></h2>
             <h2 class="text mt-2"><strong>Guests:</strong> <%= booking.restaurant.max_guests %></h2>
             <h2 class="text mt-2"><strong>Price: $</strong><%= booking.restaurant.price %></h2>
+            <button class="bg-red-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mt-3"> <%= link_to "Delete",
+                reservation_path(booking),
+              data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+              %>
+            </button>
           </div>
         </div>
       <% end %>
