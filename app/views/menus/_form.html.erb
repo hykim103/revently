@@ -8,7 +8,7 @@
       <%= f.input :description, placeholder: "The best dish in the world" %>
       <%= f.input :category, selection: true, collection: ["Breakfast", "Lunch", "Dinner", "Starters", "Mains", "Desserts", "Drinks"] %>
       <%= f.input :price, as: :numeric %>
-      <%= f.input :photo, as: :file, input_html: { multiple: true } %>
+      <%= f.input :photo, as: :file %>
     </div>
 
     <div class="form-actions">
