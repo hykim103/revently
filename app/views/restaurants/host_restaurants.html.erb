@@ -1,0 +1,14 @@
+<div>
+  <div class="flex flex-wrap gap-4 justify-center mt-44 px-20">
+    <% @restaurants.each do |restaurant| %>
+      <%= render restaurant %>
+    <% end %>
+  </div>
+
+
+  <div style="width: 85%; height: 600px; margin: 50px auto; z-index: 0;"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+</div>
