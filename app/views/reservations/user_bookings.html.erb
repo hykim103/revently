@@ -1,4 +1,4 @@
-
+<%# header icons %>
 <div>
   <div class="flex justify-center items-center navbar navbar-expand-sm navbar-light navbar-lewagon fixed top-16 shadow-sm">
     <div class="px-4 my-3">
@@ -36,32 +36,62 @@
         <i class="fas fa-carrot"></i>
       </p>
     </div>
-
   </div>
 
-
+  <%# This is the upcoming reservations section %>
   <div class="bookings-container">
   <div class="pt-20">
-    <h1 class="text-3xl">Visits</h1>
-    <h2 class="text-2xl mt-6">Upcoming reservations</h2>
-    <div class="flex flex-wrap gap-10 mt-6">
-      <% @current_bookings.each do |booking| %>
-        <div class="flex gap-3">
-          <div>
-            <img src="https://placeimg.com/200/180/arch" class="rounded-2xl" />
+    <h1 class="text-3xl text-center font-semibold">Your bookings</h1>
+    <h2 class="text-2xl mt-6 mr-2 font-semibold">Upcoming reservations</h2>
+    <div class="flex flex-wrap gap-10 mt-6 justify">
+        <% @current_bookings.each do |booking| %>
+          <%= link_to restaurants_path(booking.restaurant_id) do %>
+          <div class="flex gap-3">
+            <div>
+              <img src="https://placeimg.com/200/180/arch" class="rounded-2xl" />
+            </div>
+            <div>
+              <h2 class="text-2xl mt-2 font-semibold"><%= booking.restaurant.name %></h2>
+              <h2 class="text mt-2"><strong>Date:</strong> <%= booking.booking %></h2>
+              <h2 class="text mt-2"><strong>Guests:</strong> <%= booking.restaurant.max_guests %></h2>
+              <h2 class="text mt-2"><strong>Price: $</strong><%= booking.restaurant.price %></h2>
+              <button class="bg-red-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mt-3"> <%= link_to "Delete",
+                  reservation_path(booking),
+                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+                %>
+              </button>
+            </div>
           </div>
-          <div>
-            <h2 class="text-2xl mt-2"><%= booking.restaurant.name %></h2>
-            <h2 class="text mt-2"><strong>Date:</strong> <%= booking.booking %></h2>
-            <h2 class="text mt-2"><strong>Guests:</strong> <%= booking.restaurant.max_guests %></h2>
-            <h2 class="text mt-2"><strong>Price: $</strong><%= booking.restaurant.price %></h2>
-            <button class="bg-red-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mt-3"> <%= link_to "Delete",
-                reservation_path(booking),
-              data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-              %>
-            </button>
-          </div>
-        </div>
-      <% end %>
+          <% end %>
+        <% end %>
     </div>
   </div>
+  
+   <%# This is the past bookings section %>
+  <div class="past-bookings-container">
+  <div class="pt-20">
+    <h2 class="text-2xl mt-6 mr-2 font-semibold">Past bookings</h2>
+    <div class="flex flex-wrap gap-10 mt-6 justify">
+        <% @past_bookings.each do |booking| %>
+          <%= link_to restaurants_path(booking.restaurant_id) do %>
+          <div class="flex gap-3">
+            <div>
+              <img src="https://placeimg.com/200/180/arch" class="rounded-2xl" />
+            </div>
+            <div>
+              <h2 class="text-2xl mt-2 font-semibold"><%= booking.restaurant.name %></h2>
+              <h2 class="text mt-2"><strong>Date:</strong> <%= booking.booking %></h2>
+              <h2 class="text mt-2"><strong>Guests:</strong> <%= booking.restaurant.max_guests %></h2>
+              <h2 class="text mt-2"><strong>Price: $</strong><%= booking.restaurant.price %></h2>
+              <button class="bg-red-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mt-3"> <%= link_to "Delete",
+                  reservation_path(booking),
+                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+                %>
+              </button>
+            </div>
+          </div>
+          <% end %>
+        <% end %>
+    </div>
+  </div>
+</div>
