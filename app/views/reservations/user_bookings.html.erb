@@ -48,7 +48,7 @@
     <span class="text-2xl mt-6 mr-2 font-extrabold">Upcoming reservations</span>
     <div class="flex flex-wrap gap-10 mt-6 justify">
         <% @current_bookings.each do |booking| %>
-          <%= link_to restaurants_path(booking.restaurant_id) do %>
+          <%= link_to restaurant_path(booking.restaurant_id) do %>
           <div class="flex gap-3">
             <div>
               <img src=<%="https://source.unsplash.com/random/200x180/?restaurant-#{booking.restaurant.cuisine}"%> class="rounded-2xl" />
