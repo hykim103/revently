@@ -40,7 +40,12 @@ class RestaurantsController < ApplicationController
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
-    @restaurant.save
+    @restaurant.user = current_user
+    if @restaurant.save
+      redirect_to restaurants_path
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def edit
@@ -57,7 +62,7 @@ class RestaurantsController < ApplicationController
   private
 
   def restaurant_params
-    params.require(:restaurant).permit(:name, :address, :cuisine, :phone_number)
+    params.require(:restaurant).permit(:name, :address, :cuisine, :phone_number, :venue_type, :chairs, :max_guests, :price, :rating, :photos)
   end
 
   def set_restaurant
