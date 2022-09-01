@@ -19,7 +19,7 @@ class ReservationsController < ApplicationController
   def destroy
     @reservation = Reservation.find(params[:id])
     @reservation.destroy
-    redirect_to user_path, status: :see_other
+    redirect_to user_bookings_path, status: :see_other
   end
 
   private
