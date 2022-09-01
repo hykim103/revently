@@ -4,7 +4,14 @@ class RestaurantsController < ApplicationController
   def index
     # Query params for the filters in the restaurants page
     @restaurants = Restaurant.all
-    if params.present?
+    if params[:query].present?
+      if params[:query].present?
+        sql_query = "name ILIKE :query OR cuisine ILIKE :query"
+        @restaurants = Restaurant.where(sql_query, query: "%#{params[:query]}%")
+      else
+        @restaurants = Restaurant.all
+      end
+    else
       if params[:rating] == "4.0"
         @restaurants = Restaurant.where("rating > ?", 4.0)
       elsif params[:cuisine] == "American"
@@ -23,13 +30,13 @@ class RestaurantsController < ApplicationController
     end
 
     # Query params for the search bar at the top of each page
-    if params[:query].present?
-      sql_query = "name ILIKE :query OR cuisine ILIKE :query"
-      @restaurants = Restaurant.where(sql_query, query: "%#{params[:query]}%")
-    else
-      @restaurants = Restaurant.all
-    end
-    
+    # if params[:query].present?
+    #   sql_query = "name ILIKE :query OR cuisine ILIKE :query"
+    #   @restaurants = Restaurant.where(sql_query, query: "%#{params[:query]}%")
+    # else
+    #   @restaurants = Restaurant.all
+    # end
+
     @markers = @restaurants.geocoded.map do |restaurant|
       {
         lat: restaurant.latitude,
