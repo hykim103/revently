@@ -78,9 +78,9 @@
     <h2 class="text-3xl mt-20 mb-6">Menu</h2>
     <div>
 
-    <div class="mt-4">
+    <div class="flex flex-wrap mt-4">
       <% @restaurant.menus.each do |menu| %>
-        <div class="flex flex-wrap items-center mt-3 gap-4 w-8/12">
+        <div class="flex items-center mt-3 gap-4 w-1/2">
           <div>
             <img src=<%= "https://source.unsplash.com/random/120x120/?food-#{menu.name}" %> class="rounded-2xl" />
           </div>
