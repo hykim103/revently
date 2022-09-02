@@ -96,31 +96,25 @@
           <div>
             <img src=<%= "https://source.unsplash.com/random/120x120/?food-#{menu.name}" %> class="rounded-2xl" />
           </div>
-          <div class="flex justify-between w-7/12 ml-3">
+          <div class="flex justify-between w-3/4 ml-3">
 
-            <div>
+            <div class="w-96">
               <h1 class="text-xl font-semibold"><%= menu.name %></h1>
               <p class="text-sm"><%= menu.description %></p>
               <h2 class="font-semibold mt-2">$<%= menu.price.round(2) %></h2>
             </div>
 
             <div class="flex justify-between w-40 ml-3">
-              <div>
 
-                <div class="underline underline-offset-2">
-                  <i class="fa-solid fa-pen-to-square"></i>
-                  <%= link_to "Edit", edit_restaurant_menu_path(@restaurant, menu)%>
-                </div>
-
+              <div class="underline underline-offset-2">
+                <i class="fa-solid fa-pen-to-square"></i>
+                <%= link_to "Edit", edit_restaurant_menu_path(@restaurant, menu)%>
               </div>
-              <div>
-
-                <div class="underline underline-offset-2">
-                  <i class="fa-solid fa-trash-can"></i>
-                  <%= link_to "Delete", menu_path(menu), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-                </div>
-
+              <div class="underline underline-offset-2">
+                <i class="fa-solid fa-trash-can"></i>
+                <%= link_to "Delete", menu_path(menu), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
               </div>
+
             </div>
 
           </div>
