@@ -13,12 +13,12 @@
     <%# Search bar form %>
     <div class="mx-auto">
       <%= form_with url: restaurants_path, method: :get, class: "flex" do %>
-        <%= text_field_tag :query,
-          params[:query],
-        class: "form-control",
-        placeholder: "Find a restaurant"
-      %>
-      <%=submit_tag "Search", class: "btn btn-primary text-black" %>
+          <%= text_field_tag :query,
+            params[:query],
+          class: "form-control rounded-l-3xl px-4",
+          placeholder: "Find a restaurant"
+           %>
+          <%=submit_tag "Search", class: "search-submit btn btn-primary rounded-r-3xl" %>
       <% end %>
     </div>
 

@@ -1,4 +1,5 @@
 class RestaurantsController < ApplicationController
+
   before_action :set_restaurant, only: [:host_show, :show, :edit, :update, :destroy]
 
   def index
@@ -29,20 +30,11 @@ class RestaurantsController < ApplicationController
       end
     end
 
-    # Query params for the search bar at the top of each page
-    # if params[:query].present?
-    #   sql_query = "name ILIKE :query OR cuisine ILIKE :query"
-    #   @restaurants = Restaurant.where(sql_query, query: "%#{params[:query]}%")
-    # else
-    #   @restaurants = Restaurant.all
-    # end
-
     @markers = @restaurants.geocoded.map do |restaurant|
       {
         lat: restaurant.latitude,
         lng: restaurant.longitude,
         info_window: render_to_string(partial: "info_window", locals: {restaurant: restaurant}),
-        image_url: helpers.asset_url("https://res.cloudinary.com/hykim103/image/upload/v1661956170/Revently-logo_ja0wa1.png")
       }
     end
   end
@@ -92,6 +84,7 @@ class RestaurantsController < ApplicationController
 
   def update
     @restaurant.update(restaurant_params)
+    redirect_to restaurant_path(@restaurant)
   end
 
   def destroy

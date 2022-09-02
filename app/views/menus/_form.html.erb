@@ -11,6 +11,6 @@
   </div>
 
   <div class="form-actions flex items-center mt-">
-    <%= f.button :submit, "Add", class: "bg-indigo-600 text-white px-3 py-2 mt-4 rounded-md w-full" %>
+    <%= f.button :submit, @menu.id.nil? ? "Add" : "Save", class: "bg-indigo-600 text-white px-3 py-2 mt-4 rounded-md w-full" %>
   </div>
 <% end %>
