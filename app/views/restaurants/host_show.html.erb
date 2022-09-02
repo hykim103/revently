@@ -7,13 +7,20 @@
       <h3 class="mt-1"><%= @restaurant.phone_number %></h3>
     </div>
 
-    <div>
+    <div class="flex gap-4">
 
       <div class="underline underline-offset-2">
         <i class="fa-solid fa-pen-to-square"></i>
         <%= link_to "Edit", edit_restaurant_path%>
       </div>
 
+      <div class="underline underline-offset-2">
+          <i class="fa-solid fa-trash-can"></i>
+          <%= link_to "Delete",
+            restaurant_path(@restaurant),
+            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+          %>
+      </div>
     </div>
   </div>
 
