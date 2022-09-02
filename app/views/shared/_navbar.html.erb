@@ -13,12 +13,12 @@
     <%# Search bar form %>
     <div class="mx-auto">
       <%= form_with url: restaurants_path, method: :get, class: "flex" do %>
-        <%= text_field_tag :query,
-          params[:query],
-        class: "form-control",
-        placeholder: "Find a restaurant"
-      %>
-      <%=submit_tag "Search", class: "btn btn-primary text-black" %>
+          <%= text_field_tag :query,
+            params[:query],
+          class: "form-control rounded-l-3xl px-4",
+          placeholder: "Find a restaurant"
+           %>
+          <%=submit_tag "Search", class: "search-submit btn btn-primary rounded-r-3xl" %>
       <% end %>
     </div>
 
@@ -39,9 +39,9 @@
               <% if current_user.is_host == false %>
                 <%= link_to "Become a host", new_restaurant_path, class: "nav-link px-4 mr-6 border rounded-xl hover:bg-gray-400 hover:text-white" %>
               <% elsif current_page?(host_restaurants_path) %>
-                <%= link_to "Switch to user", restaurants_path, class: "nav-link px-4 mr-4" %>
+                <%= link_to "Switch to user", restaurants_path, class: "nav-link px-4 mr-4 border rounded-xl hover:bg-gray-400 hover:text-white" %>
               <% else %>
-                <%= link_to "Switch to host", host_restaurants_path, class: "nav-link px-4 mr-4" %>
+                <%= link_to "Switch to host", host_restaurants_path, class: "nav-link px-4 mr-4 border rounded-xl hover:bg-gray-400 hover:text-white" %>
               <% end %>
             </li>
             <li class="nav-item dropdown">
