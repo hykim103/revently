@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
+  before_action :set_restaurant, only: [:host_show, :show, :edit, :update, :destroy]
 
   def index
     # Query params for the filters in the restaurants page
@@ -51,25 +51,24 @@ class RestaurantsController < ApplicationController
   end
 
   def host_restaurants
-    @restaurants = Restaurant.where(user_id: current_user)
+    @host_restaurants = Restaurant.where(user_id: current_user)
 
-    @markers = @restaurants.geocoded.map do |restaurant|
+    @markers = @host_restaurants.geocoded.map do |host_restaurant|
       {
-        lat: restaurant.latitude,
-        lng: restaurant.longitude,
-        info_window: render_to_string(partial: "info_window", locals: {restaurant: restaurant}),
+        lat: host_restaurant.latitude,
+        lng: host_restaurant.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { restaurant: host_restaurant }),
         image_url: helpers.asset_url("https://res.cloudinary.com/hykim103/image/upload/v1661956170/Revently-logo_ja0wa1.png")
       }
     end
   end
 
+  def host_show
+    authenticate_user!
+  end
+
   def show
     authenticate_user!
-    @marker = [{
-      lat: @restaurant.latitude,
-      lng: @restaurant.longitude,
-      info_window: render_to_string(partial: "info_window", locals: { restaurant: @restaurant })
-    }]
   end
 
   def new

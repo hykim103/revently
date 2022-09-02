@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'host_bookings', to: 'reservations#host_bookings'
   get 'confirmation', to: 'reservations#create'
   get 'host_restaurants', to: 'restaurants#host_restaurants'
+  get 'host_restaurants/:id', to: 'restaurants#host_show', as: 'host_restaurant'
   delete 'destroy_restaurant_menu', to: 'menus#destroy'
 
   resources :restaurants do
