@@ -88,3 +88,12 @@
 div[data-tooltip]:after {
   left: 5px!important;
 }
+
+.menu-submit {
+  background-color: #4953E7;
+  color: white;
+  margin-bottom: 10px;
+  :hover {
+    background-color:rgb(42, 42, 41);
+  }
+}
