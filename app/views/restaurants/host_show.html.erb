@@ -102,7 +102,7 @@
 
                 <div class="underline underline-offset-2">
                   <i class="fa-solid fa-pen-to-square"></i>
-                  <%= link_to "Edit", "#"%>
+                  <%= link_to "Edit", edit_restaurant_menu_path(@restaurant, menu)%>
                 </div>
 
               </div>
@@ -110,7 +110,7 @@
 
                 <div class="underline underline-offset-2">
                   <i class="fa-solid fa-trash-can"></i>
-                  <%= link_to "Delete", "#"%>
+                  <%= link_to "Delete", menu_path(menu), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
                 </div>
 
               </div>

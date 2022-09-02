@@ -1,6 +1,6 @@
 class MenusController < ApplicationController
   before_action :set_restaurant, only: %i[new create edit updates]
-  before_action :set_menu, only: %i[edit update]
+  before_action :set_menu, only: %i[edit update destroy]
 
   def new
     @menu = Menu.new
@@ -10,7 +10,7 @@ class MenusController < ApplicationController
     @menu = Menu.new(menu_params)
     @menu.restaurant = @restaurant
     if @menu.save
-      redirect_to new_restaurant_menu_path(host_restaurants_path)
+      redirect_to new_restaurant_menu_path(@restaurant)
     else
       render :new, status: :unprocessable_entity
     end
@@ -25,8 +25,8 @@ class MenusController < ApplicationController
   end
 
   def destroy
-    @menu.find(params[:id])
-    @menu.destroy status: :see_other
+    @menu.destroy
+    redirect_to host_restaurant_path(@menu.restaurant), status: :see_other
   end
 
   private
