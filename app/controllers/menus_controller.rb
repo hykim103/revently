@@ -9,8 +9,6 @@ class MenusController < ApplicationController
     @menu = Menu.new(menu_params)
     @menu.restaurant = @restaurant
     if @menu.save
-      current_user.is_host = true
-      current_user.save
       redirect_to new_restaurant_menu_path(@restaurant)
     else
       render :new, status: :unprocessable_entity
