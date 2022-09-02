@@ -128,7 +128,7 @@
                 <% if @restaurant.user == current_user %>
                   <div class="underline underline-offset-2">
                     <i class="fa-solid fa-pen-to-square"></i>
-                    <%= link_to "Edit", "#"%>
+                    <%= link_to "Edit", edit_restaurant_menu_path(@restaurant, menu)%>
                   </div>
                 <% end %>
               </div>
