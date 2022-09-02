@@ -1,11 +1,12 @@
 class MenusController < ApplicationController
+  before_action :set_restaurant, only: %i[new create edit updates]
+  before_action :set_menu, only: %i[edit update]
+
   def new
-    @restaurant = Restaurant.find(params[:restaurant_id])
     @menu = Menu.new
   end
 
   def create
-    @restaurant = Restaurant.find(params[:restaurant_id])
     @menu = Menu.new(menu_params)
     @menu.restaurant = @restaurant
     if @menu.save
@@ -20,6 +21,7 @@ class MenusController < ApplicationController
 
   def update
     @menu.update(menu_params)
+    redirect_to new_restaurant_menu_path(@restaurant)
   end
 
   def destroy
@@ -31,5 +33,13 @@ class MenusController < ApplicationController
 
   def menu_params
     params.require(:menu).permit(:name, :description, :category, :price, :photo)
+  end
+
+  def set_restaurant
+    @restaurant = Restaurant.find(params[:restaurant_id])
+  end
+
+  def set_menu
+    @menu = Menu.find(params[:id])
   end
 end

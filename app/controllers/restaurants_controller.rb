@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
+  before_action :set_restaurant, only: %i[show edit update destroy]
 
   def index
     # Query params for the filters in the restaurants page
@@ -28,14 +28,6 @@ class RestaurantsController < ApplicationController
         @restaurants = Restaurant.where(cuisine: "Vegan")
       end
     end
-
-    # Query params for the search bar at the top of each page
-    # if params[:query].present?
-    #   sql_query = "name ILIKE :query OR cuisine ILIKE :query"
-    #   @restaurants = Restaurant.where(sql_query, query: "%#{params[:query]}%")
-    # else
-    #   @restaurants = Restaurant.all
-    # end
 
     @markers = @restaurants.geocoded.map do |restaurant|
       {
@@ -93,6 +85,7 @@ class RestaurantsController < ApplicationController
 
   def update
     @restaurant.update(restaurant_params)
+    redirect_to restaurant_path(@restaurant)
   end
 
   def destroy
