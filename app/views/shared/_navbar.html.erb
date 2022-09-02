@@ -16,9 +16,10 @@
         class: "form-control",
         placeholder: "Find a restaurant"
       %>
-      <%=submit_tag "    Search    ", class: "btn btn-primary text-black" %>
+      <%=submit_tag "Search", class: "btn btn-primary text-black" %>
       <% end %>
     </div>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -31,7 +32,7 @@
           </li>
           <li class="nav-item">
             <% if current_user.is_host == false %>
-              <%= link_to "Become a host", new_restaurant_path, class: "font-semibold nav-link px-4 mr-4" %>
+              <%= link_to "Become a host", new_restaurant_path, class: "nav-link px-4 mr-6 border rounded-xl hover:bg-gray-400 hover:text-white" %>
             <% elsif current_page?(host_restaurants_path) %>
               <%= link_to "Switch to user", restaurants_path, class: "nav-link px-4 mr-4" %>
             <% else %>
