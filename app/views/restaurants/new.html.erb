@@ -1,16 +1,11 @@
-<div>
-  <%= link_to "Back", restaurants_path, class: "ml-3" %>
-</div>
-
-<div class="flex justify-between mt-3">
-  <div class="flex justify-center items-center form-bg"style="width: 50%;">
-    <h1 class="mb-5 text-5xl sticky text-white">List Your Restaurant</h1>
+<div class="flex justify-between -mt-11 relative">
+  <div class="flex justify-center form-bg"style="width: 50%;">
+    <h1 class="mb-5 text-5xl fixed text-white mt-80">List Your Restaurant</h1>
   </div>
   <div class="flex justify-center" style="width: 50%;">
-    <div style="width: 80%;">
+    <div style="width: 80%;" class="mt-10">
       <%= render "form", restaurant: @restaurant %>
     </div>
   </div>
-
   <br>
 </div>
