@@ -97,3 +97,11 @@ div[data-tooltip]:after {
     background-color:rgb(42, 42, 41);
   }
 }
+
+.search-submit {
+  background-color: #4F46E5;
+  color: rgb(42, 42, 41);
+  :hover {
+    background-color:white;
+  }
+}
