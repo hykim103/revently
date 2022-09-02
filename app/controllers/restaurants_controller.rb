@@ -13,7 +13,7 @@ class RestaurantsController < ApplicationController
       end
     else
       if params[:rating] == "4.0"
-        @restaurants = Restaurant.where("rating > ?", 4.0)
+        @restaurants = Restaurant.where("rating > ?", 0.1).order(rating: :desc)
       elsif params[:cuisine] == "American"
         @restaurants = Restaurant.where(cuisine: "American")
       elsif params[:cuisine] == "Japanese"
