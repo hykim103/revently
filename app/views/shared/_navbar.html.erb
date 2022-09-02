@@ -39,9 +39,9 @@
               <% if current_user.is_host == false %>
                 <%= link_to "Become a host", new_restaurant_path, class: "nav-link px-4 mr-6 border rounded-xl hover:bg-gray-400 hover:text-white" %>
               <% elsif current_page?(host_restaurants_path) %>
-                <%= link_to "Switch to user", restaurants_path, class: "nav-link px-4 mr-4" %>
+                <%= link_to "Switch to user", restaurants_path, class: "nav-link px-4 mr-4 border rounded-xl hover:bg-gray-400 hover:text-white" %>
               <% else %>
-                <%= link_to "Switch to host", host_restaurants_path, class: "nav-link px-4 mr-4" %>
+                <%= link_to "Switch to host", host_restaurants_path, class: "nav-link px-4 mr-4 border rounded-xl hover:bg-gray-400 hover:text-white" %>
               <% end %>
             </li>
             <li class="nav-item dropdown">
