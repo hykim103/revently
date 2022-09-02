@@ -1,6 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed top-0 z-50 border-b px-4">
-  <div class="container-fluid">
-    <div class="flex items-center">
+  <div class="container-fluid flex">
+
+    <div class="flex items-center w-96">
       <%= link_to root_path, class: "navbar-brand" do %>
         <%= image_tag url="https://res.cloudinary.com/hykim103/image/upload/v1661956170/Revently-logo_ja0wa1.png" %>
       <% end %>
@@ -8,9 +9,10 @@
         <h1>Revently</h1>
       <% end %>
     </div>
+
     <%# Search bar form %>
-    <div class="flex">
-      <%= form_with url: restaurants_path, method: :get, class: "d-flex" do %>
+    <div class="mx-auto">
+      <%= form_with url: restaurants_path, method: :get, class: "flex" do %>
         <%= text_field_tag :query,
           params[:query],
         class: "form-control",
@@ -20,39 +22,45 @@
       <% end %>
     </div>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <div class="w-96">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-        <% if user_signed_in? %>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto">
           <li class="nav-item">
             <%= link_to "Restaurants", "/restaurants", class: "nav-link px-4" %>
           </li>
-          <li class="nav-item">
-            <% if current_user.is_host == false %>
-              <%= link_to "Become a host", new_restaurant_path, class: "nav-link px-4 mr-6 border rounded-xl hover:bg-gray-400 hover:text-white" %>
-            <% elsif current_page?(host_restaurants_path) %>
-              <%= link_to "Switch to user", restaurants_path, class: "nav-link px-4 mr-4" %>
-            <% else %>
-              <%= link_to "Switch to host", host_restaurants_path, class: "nav-link px-4 mr-4" %>
-            <% end %>
-          </li>
-          <li class="nav-item dropdown">
-            <%= image_tag "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "My restaurants", host_restaurants_path, class: "dropdown-item" %>
-              <%= link_to "My reservations", user_bookings_path, class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            </div>
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link px-4" %>
-          </li>
-        <% end %>
-      </ul>
+
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <% if current_user.is_host == false %>
+                <%= link_to "Become a host", new_restaurant_path, class: "nav-link px-4 mr-6 border rounded-xl hover:bg-gray-400 hover:text-white" %>
+              <% elsif current_page?(host_restaurants_path) %>
+                <%= link_to "Switch to user", restaurants_path, class: "nav-link px-4 mr-4" %>
+              <% else %>
+                <%= link_to "Switch to host", host_restaurants_path, class: "nav-link px-4 mr-4" %>
+              <% end %>
+            </li>
+            <li class="nav-item dropdown">
+              <%= image_tag "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <%= link_to "My restaurants", host_restaurants_path, class: "dropdown-item" %>
+                <%= link_to "My reservations", user_bookings_path, class: "dropdown-item" %>
+                <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+              </div>
+            </li>
+
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "Login", new_user_session_path, class: "nav-link px-4" %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
     </div>
   </div>
 </div>
