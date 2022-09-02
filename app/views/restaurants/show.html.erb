@@ -20,15 +20,15 @@
   <div class="w-full">
     <div class="w-full mt-4 flex space-between gap-3">
       <div class="flex">
-        <img src="https://images.unsplash.com/photo-1560053608-13721e0d69e8?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=400&ixid=MnwxfDB8MXxyYW5kb218MHx8cmVzdGF1cmFudHx8fHx8fDE2NjE5NTIyODg&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=825" class="rounded-2xl" />
+        <img src="https://images.unsplash.com/photo-1560053608-13721e0d69e8?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=500&ixid=MnwxfDB8MXxyYW5kb218MHx8cmVzdGF1cmFudHx8fHx8fDE2NjE5NTIyODg&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=800" class="rounded-2xl" />
       </div>
       <div>
-        <img src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=200&ixid=MnwxfDB8MXxyYW5kb218MHx8cmVzdGF1cmFudHx8fHx8fDE2NjE5NTE4Mjc&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=200" class="rounded-2xl" />
-        <img src="https://images.unsplash.com/photo-1592861956120-e524fc739696?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=200&ixid=MnwxfDB8MXxyYW5kb218MHx8cmVzdGF1cmFudHx8fHx8fDE2NjE5NTE5MTM&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=200" class="rounded-2xl mt-3" />
+        <img src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=250&ixid=MnwxfDB8MXxyYW5kb218MHx8cmVzdGF1cmFudHx8fHx8fDE2NjE5NTE4Mjc&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=250" class="rounded-2xl" />
+        <img src="https://images.unsplash.com/photo-1592861956120-e524fc739696?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=250&ixid=MnwxfDB8MXxyYW5kb218MHx8cmVzdGF1cmFudHx8fHx8fDE2NjE5NTE5MTM&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=250" class="rounded-2xl mt-3" />
       </div>
       <div>
-        <img src="https://images.unsplash.com/photo-1604328471151-b52226907017?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=200&ixid=MnwxfDB8MXxyYW5kb218MHx8cmVzdGF1cmFudHx8fHx8fDE2NjE5NTE5NzI&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=200" class="rounded-2xl" />
-        <img src="https://images.unsplash.com/photo-1564759224907-65b945ff0e84?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=200&ixid=MnwxfDB8MXxyYW5kb218MHx8cmVzdGF1cmFudHx8fHx8fDE2NjE5NTIwODk&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=200" class="rounded-2xl mt-3" />
+        <img src="https://images.unsplash.com/photo-1604328471151-b52226907017?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=250&ixid=MnwxfDB8MXxyYW5kb218MHx8cmVzdGF1cmFudHx8fHx8fDE2NjE5NTE5NzI&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=250" class="rounded-2xl" />
+        <img src="https://images.unsplash.com/photo-1564759224907-65b945ff0e84?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=250&ixid=MnwxfDB8MXxyYW5kb218MHx8cmVzdGF1cmFudHx8fHx8fDE2NjE5NTIwODk&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=250" class="rounded-2xl mt-3" />
       </div>
     </div>
 
@@ -65,7 +65,7 @@
       </div>
 
       <% if @restaurant.user != current_user %>
-        <div class="fixed bottom-10 left-2/3 z-50">
+        <div class="z-20 mt-4 ml-12">
           <div class="w-96 p-6 border shadow-sm rounded-lg bg-white">
             <div class="mb-3">
               <%= simple_form_for [@restaurant, Reservation.new] do |f| %>
@@ -96,10 +96,11 @@
     </div>
   </div>
 
-  <div class="mt-10">
 
 
-    <h2 class="text-3xl mb-6">Menu</h2>
+
+    <h2 class="text-3xl mt-20 mb-6">Menu</h2>
+    <div>
 
     <% if @restaurant.user == current_user %>
       <div class="underline underline-offset-2 mb-10">
@@ -110,11 +111,11 @@
 
     <div class="mt-4">
       <% @restaurant.menus.each do |menu| %>
-        <div class="flex flex-wrap justify-start mt-3 gap-4">
+        <div class="flex flex-wrap items-center mt-3 gap-4 w-8/12">
           <div>
             <img src=<%= "https://source.unsplash.com/random/120x120/?food-#{menu.name}" %> class="rounded-2xl" />
           </div>
-          <div class="flex justify-between w-96 ml-5">
+          <div class="flex justify-between w-7/12 ml-3">
 
             <div>
               <h1 class="text-xl font-semibold"><%= menu.name %></h1>
@@ -122,7 +123,7 @@
               <h2 class="font-semibold mt-2">$<%= menu.price.round(2) %></h2>
             </div>
 
-            <div class="flex justify-between w-40 ml-5">
+            <div class="flex justify-between w-40 ml-3">
               <div>
                 <% if @restaurant.user == current_user %>
                   <div class="underline underline-offset-2">
