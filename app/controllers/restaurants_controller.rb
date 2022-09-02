@@ -80,6 +80,8 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new(restaurant_params)
     @restaurant.user = current_user
     if @restaurant.save
+      current_user.is_host = true
+      current_user.save
       redirect_to new_restaurant_menu_path(@restaurant.id)
     else
       render :new, status: :unprocessable_entity
